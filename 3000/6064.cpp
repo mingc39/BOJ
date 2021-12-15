@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// ÃÖ¼Ò°ø¾à¼ö ±¸ÇÏ±â
+// ìµœì†Œê³µë°°ìˆ˜ êµ¬í•˜ê¸°
 int lcm(int a, int b) {
 	int l, s, t;
 	if(a > b) { l = a; s = b; }
@@ -19,25 +19,25 @@ int main() {
 	for(scanf("%d", &T); T > 0; T--) {
 		// k % m == x
 		// k % n == y
-		// ¸¦ ¸¸Á·ÇÏ´Â k °ªÀ» Ã£¾Æ¾ßÇÑ´Ù
+		// ë¥¼ ë§Œì¡±í•˜ëŠ” k ê°’ì„ ì°¾ì•„ì•¼í•œë‹¤
 		scanf("%d %d %d %d", &m, &n, &x, &y);
-		// ³ª¸ÓÁö ¿¬»ê °á°úÀÇ ¹üÀ§´Â 0 ~ (n - 1)ÀÎµ¥ x, y ´Â 1 ~ n ¹üÀ§·Î ÀÔ·ÂµÊ 
+		// ë‚˜ë¨¸ì§€ ì—°ì‚° ê²°ê³¼ì˜ ë²”ìœ„ëŠ” 0 ~ (n - 1)ì¸ë° x, y ëŠ” 1 ~ n ë²”ìœ„ë¡œ ìž…ë ¥ë¨ 
 		if(x == m) x = 0;
 		if(y == n) y = 0;
 		
 		int i, r = -1;
 		int l = lcm(n, m);
-		// i % m == x À» ¸¸Á·ÇÏ´Â iÀº xºÎÅÍ m °£°ÝÀ¸·Î Á¸Àç
-		// <m, n>(¸¶Áö¸· ³âµµ)´Â m, nÀÇ ÃÖ¼Ò°ø¹è¼öÀÌ¹Ç·Î m, nÀÇ ÃÖ¼Ò °ø¹è¼ö±îÁö¸¸ È®ÀÎÇÏ¸é µÊ 
+		// i % m == x ì„ ë§Œì¡±í•˜ëŠ” iì€ xë¶€í„° m ê°„ê²©ìœ¼ë¡œ ì¡´ìž¬
+		// <m, n>(ë§ˆì§€ë§‰ ë…„ë„)ëŠ” m, nì˜ ìµœì†Œê³µë°°ìˆ˜ì´ë¯€ë¡œ m, nì˜ ìµœì†Œ ê³µë°°ìˆ˜ê¹Œì§€ë§Œ í™•ì¸í•˜ë©´ ë¨ 
 		for(i = x; i <= l; i += m) {
-			// ÇØ´ç i°¡ i % n == y ¸¸Á·ÇÏ´ÂÁö È®ÀÎ 
+			// í•´ë‹¹ iê°€ i % n == y ë§Œì¡±í•˜ëŠ”ì§€ í™•ì¸ 
 			if(i % n == y) {
 				r = i;
 				break;
 			}
 		}
-		// Á¶°Ç¿¡ ¸Â´Â °ªÀÌ ¾øÀ» ¼ö ÀÖÀ½
-		// ±×·±°æ¿ì { r = i; break; }°¡ ¼öÇàµÇÁö ¾Ê¾Æ rÀÇ ÃÊ±â°ª -1ÀÌ Ãâ·ÂµÊ 
+		// ì¡°ê±´ì— ë§žëŠ” ê°’ì´ ì—†ì„ ìˆ˜ ìžˆìŒ
+		// ê·¸ëŸ°ê²½ìš° { r = i; break; }ê°€ ìˆ˜í–‰ë˜ì§€ ì•Šì•„ rì˜ ì´ˆê¸°ê°’ -1ì´ ì¶œë ¥ë¨ 
 		printf("%d\n", r);
 	}
 	return 0;
