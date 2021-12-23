@@ -8,21 +8,21 @@ int main() {
 	int queue[QUEUE_SIZE][2], qs = 0, qe = 0;
 	bool vb[200010] = { 0, };
 	
-	// ÀÔ·Â 
+	// ìž…ë ¥ 
 	scanf("%d %d", &n, &k);
 	
-	// ½ÃÀÛ À§Ä¡ Å¥¿¡ ³Ö°í Å½»ö ½ÃÀÛ  
+	// ì‹œìž‘ ìœ„ì¹˜ íì— ë„£ê³  íƒìƒ‰ ì‹œìž‘  
 	queue[qs  ][1] = 0;
 	queue[qs++][0] = n;
 	if(qs == QUEUE_SIZE) qs = 0;
 	while(qs != qe) {
 		l = queue[qe  ][1];
-		c = queue[qe++][0]; // Å¥¿¡¼­ ÇÏ³ª ²¨³»±â  
+		c = queue[qe++][0]; // íì—ì„œ í•˜ë‚˜ êº¼ë‚´ê¸°  
 		if(qe == QUEUE_SIZE) qe = 0;
-		if(vb[c] == true) continue; // ÀÌ¹Ì ¹æ¹®Çß´ÂÁö È®ÀÎ
+		if(vb[c] == true) continue; // ì´ë¯¸ ë°©ë¬¸í–ˆëŠ”ì§€ í™•ì¸
 		vb[c] = true;
-		if(c == k) break; // µ¿»ýÀÌ ÀÖ´Â À§Ä¡ k¿¡ µµÂøÇÏ¸é Å½»ö Á¾·á
-		// ´ÙÀ½ À§Ä¡ Å¥¿¡ ÀúÀå 
+		if(c == k) break; // ë™ìƒì´ ìžˆëŠ” ìœ„ì¹˜ kì— ë„ì°©í•˜ë©´ íƒìƒ‰ ì¢…ë£Œ
+		// ë‹¤ìŒ ìœ„ì¹˜ íì— ì €ìž¥ 
 		for(int i = c; i <= 200010 && i != 0; i *= 2) {
 			queue[qs  ][1] = l;
 			queue[qs++][0] = i;
@@ -40,7 +40,7 @@ int main() {
 		}
 	}
 	
-	// °á°ú Ãâ·Â  
+	// ê²°ê³¼ ì¶œë ¥  
 	printf("%d", l);
 	
 	return 0;
