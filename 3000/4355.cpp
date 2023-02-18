@@ -4,7 +4,7 @@
 int main() {
 	int primes[78498];
 	
-	{ // ¼Ò¼ö ±¸ÇÏ±â  
+	{ // ì†Œìˆ˜ êµ¬í•˜ê¸°  
 		primes[0] = 2;
 		for(int i = 1, n = 3; i < 78498; n += 2) {
 			int k = 1, sroot = sqrt(n);
@@ -15,32 +15,36 @@ int main() {
 	
 	long long factors[78498], l = 0;
 	long long num;
-	
-INPUT: 
-	// ÀÔ·Â 
+
+	// ìž…ë ¥ 
 	scanf("%lld", &num);
-	if(num == 0) return 0;
-	l = 0;
-	
-	{ // ¼ÒÀÎ¼ö ºÐÇØ  
-		long long n = num;
-		int i = 0; 
-		
-		while(i < 78497) {
-			if(n == 1) break;
-			if(n % primes[i] == 0) {
-				factors[l++] = primes[i];
-				while(n % primes[i] == 0) n /= primes[i];
-			} else i++;
+	while(num != 0) {
+		if(num == 1) {
+			printf("%lld\n", 0);
+			scanf("%lld", &num);
+			continue;
 		}
-		if(n != 1) factors[l++] = n;
+	
+		l = 0;
+		{ // ì†Œì¸ìˆ˜ ë¶„í•´  
+			long long n = num;
+			int i = 0; 
+			
+			while(i < 78497) {
+				if(n == 1) break;
+				if(n % primes[i] == 0) {
+					factors[l++] = primes[i];
+					while(n % primes[i] == 0) n /= primes[i];
+				} else i++;
+			}
+			if(n != 1) factors[l++] = n;
+		}
+	
+		{ // ì˜¤ì¼ëŸ¬ í”¼ í•¨ìˆ˜ êµ¬í•˜ê¸°  
+			for(int i = 0; i < l; i++) num = num / factors[i] * (factors[i] - 1);
+		}
+	
+		printf("%lld\n", num);
+		scanf("%lld", &num);
 	}
-	
-	{ // ¿ÀÀÏ·¯ ÇÇ ÇÔ¼ö ±¸ÇÏ±â  
-		for(int i = 0; i < l; i++) num = num / factors[i] * (factors[i] - 1);
-	}
-	
-	printf("%lld\n", num);
-	
-	goto INPUT; 
 }

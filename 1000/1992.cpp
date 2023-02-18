@@ -3,7 +3,10 @@
 
 void quadTree(int N, int** img, int s, int r, int c) {
 	
-	if(N == 1) printf("%d", img[r][c]);
+	if(N == 1) {
+		printf("%d", img[r][c]);
+		return;
+	}
 	int e = 1;
 	for(int i = r; i < r + s; i++) {
 		for(int j = c; j < c + s; j ++) {
